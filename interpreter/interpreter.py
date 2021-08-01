@@ -9,14 +9,11 @@ def interpreter():
         try:
             print(Color.GREEN, end='')
             input_list = input('TODO> ').strip().split(None, 1)
+            input_iter = iter(input_list)
             print(Color.RESET, end='')
-            command_sym = ''
-            if len(input_list) > 0:
-                command_sym = input_list[0]
-            args = ''
-            if len(input_list) > 1:
-                args = input_list[1]
-            command = get_command(command_sym)
+            cmd_sym = next(input_iter, '')
+            args    = next(input_iter, '')
+            command = get_command(cmd_sym)
             state = command.execute(args)
         except KeyboardInterrupt:
             print('\nUse "quit" to quit.')

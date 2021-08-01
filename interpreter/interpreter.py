@@ -8,9 +8,8 @@ def interpreter():
     while not state == State.QUIT:
         try:
             print(Color.GREEN, end='')
-            input_list = input('TODO> ').strip().split(None, 1)
+            input_list = input('TODO> ' + Color.RESET).strip().split(None, 1)
             input_iter = iter(input_list)
-            print(Color.RESET, end='')
             cmd_sym = next(input_iter, '')
             args    = next(input_iter, '')
             command = get_command(cmd_sym)
